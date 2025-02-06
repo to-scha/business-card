@@ -12,10 +12,20 @@
 	// "features": {},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [4200,9876]
+	"forwardPorts": [
+		4200,
+		9876
+	],
+	"portsAttributes": {
+		"4200": {
+			"label": "Angular"
+		}
+	},
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "yarn install",
+	"postCreateCommand": "npm ci",
+
+	"postStartCommand": "ng serve --host 0.0.0.0"
 
 	// Configure tool-specific properties.
 	// "customizations": {},

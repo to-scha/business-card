@@ -1,0 +1,31 @@
+<mat-card class="card project" appearance="outlined">
+  <img mat-card-image src="projekte.png" alt="Projekte">
+  <mat-card-header>
+    <mat-card-title><h2>Projekte</h2></mat-card-title>
+  </mat-card-header>
+  <mat-accordion class="example-headers-align">
+    <mat-expansion-panel *ngFor="let project of projects | async">
+      <mat-expansion-panel-header>
+        <mat-panel-title> {{ project.from | date: 'MM/yyyy' }}
+          - {{ (project.to !== undefined) ? (project.to | date: 'MM/yyyy') : 'Heute' }}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{ project.name }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div>
+        <strong>Ziel:</strong> {{ project.target }} <br>
+        <strong>Rolle:</strong> {{ project.role }} <br>
+        <strong>Branche:</strong> {{ project.sector }} <br>
+        <strong>Aufgaben:</strong>
+        <ul>
+          <li *ngFor="let task of project.tasks">{{ task }}</li>
+        </ul>
+        <strong>Technologien:</strong>
+        <ul>
+          <li *ngFor="let technology of project.technologies">{{ technology }}</li>
+        </ul>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</mat-card>

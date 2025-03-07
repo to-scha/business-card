@@ -1,25 +1,7 @@
 @import 'material-icons/iconfont/material-icons.scss'
-
-@font-face
-  font-display: swap
-  font-family: 'Roboto'
-  font-style: normal
-  font-weight: 300
-  src: url('./fonts/roboto-v32-latin-300.woff2') format('woff2')
-
-@font-face
-  font-display: swap
-  font-family: 'Roboto'
-  font-style: normal
-  font-weight: 400
-  src: url('./fonts/roboto-v32-latin-regular.woff2') format('woff2')
-
-@font-face
-  font-display: swap
-  font-family: 'Roboto'
-  font-style: normal
-  font-weight: 500
-  src: url('./fonts/roboto-v32-latin-500.woff2') format('woff2')
+@import '@fontsource/roboto'
+@import '@fontsource/roboto/500.css'
+@import '@fontsource/roboto/300.css'
 
 
 :root
@@ -45,6 +27,7 @@ body
 a
   color: var(--primary)
   text-decoration: none
+
   &:hover
     color: var(--primary-hover)
 
@@ -61,6 +44,7 @@ a
   border-radius: 6px
   padding: 8px 16px
   cursor: pointer
+
   &:hover
     background-color: var(--primary-hover)
 
@@ -75,6 +59,7 @@ a[mat-icon-button]:hover
   max-width: 600px
   margin: 1em auto
   padding: 0
+
   mat-card-header
     display: flex
     justify-content: space-between

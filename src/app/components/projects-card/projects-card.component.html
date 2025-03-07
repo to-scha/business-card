@@ -3,28 +3,35 @@
   <mat-card-header>
     <mat-card-title><h2>Projekte</h2></mat-card-title>
   </mat-card-header>
-  <mat-accordion class="example-headers-align">
-    <mat-expansion-panel *ngFor="let project of projects | async">
+  <div class="toggleView">
+    <button *ngIf="!toggleView" mat-icon-button (click)="openAllPanels()">
+      <mat-icon>view_agenda</mat-icon>
+    </button>
+    <button *ngIf="toggleView" mat-icon-button (click)="closeAllPanels()">
+      <mat-icon>view_headline</mat-icon>
+    </button>
+  </div>
+  <mat-accordion #projectAccordion="matAccordion" multi="true" class="example-headers-align">
+    <mat-expansion-panel *ngFor="let project of projects | async" expanded>
       <mat-expansion-panel-header>
-        <mat-panel-title> {{ project.from | date: 'MM/yyyy' }}
-          - {{ (project.to !== undefined) ? (project.to | date: 'MM/yyyy') : 'Heute' }}
-        </mat-panel-title>
-        <mat-panel-description>
+        <mat-panel-title>
           {{ project.name }}
-        </mat-panel-description>
+        </mat-panel-title>
       </mat-expansion-panel-header>
       <div>
-        <strong>Ziel:</strong> {{ project.target }} <br>
-        <strong>Rolle:</strong> {{ project.role }} <br>
-        <strong>Branche:</strong> {{ project.sector }} <br>
+        <strong>Zeitraum:</strong> {{ project.from | date: 'MM/yyyy' }}
+        - {{ (project.to !== undefined) ? (project.to | date: 'MM/yyyy') : 'Heute' }} <br><br>
+        <strong>Ziel:</strong> {{ project.target }} <br><br>
+        <strong>Rolle:</strong> {{ project.role }} <br><br>
+        <strong>Branche:</strong> {{ project.sector }} <br><br>
         <strong>Aufgaben:</strong>
         <ul>
           <li *ngFor="let task of project.tasks">{{ task }}</li>
         </ul>
         <strong>Technologien:</strong>
-        <ul>
-          <li *ngFor="let technology of project.technologies">{{ technology }}</li>
-        </ul>
+        <mat-chip-set>
+          <mat-chip *ngFor="let technology of project.technologies">{{ technology }}</mat-chip>
+        </mat-chip-set>
       </div>
     </mat-expansion-panel>
   </mat-accordion>

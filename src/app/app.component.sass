@@ -1,12 +1,15 @@
 h1
   position: sticky
-  top: 75%
-  height: 1px
-  margin: 0
-  padding: 0
-  width: 8vw
-  font-size: 6vh
-  transform: rotate(-90deg) translateY(-50%)
+  text-align: center
+  top: 0
+  @media screen and (min-width: 800px)
+    top: 75%
+    height: 1px
+    margin: 0
+    padding: 0
+    width: 8vw
+    font-size: 6vh
+    transform: rotate(-90deg) translateY(-50%)
   color: var(--primary)
   z-index: -1
   white-space: nowrap
